@@ -4,13 +4,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName"
-			value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="jdbcUrl"
-			value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+ 		<!-- <property name="driverClassName" value="oracle.jdbc.pool.OracleDataSource"></property>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE"></property> --> 
+		
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"></property>
 		<property name="username" value="ldudb"></property>
 		<property name="password" value="ldu1234"></property>
-	</bean>
+	</bean>	
 
 	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource"
 		destroy-method="close">
