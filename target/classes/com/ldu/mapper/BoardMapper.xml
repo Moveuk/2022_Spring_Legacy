@@ -10,6 +10,12 @@
         insert into board(bno, title, content, writer) values (board_seq.nextval, #{title}, #{content}, #{writer})
         
     </insert>
-
+ 
+    <!-- 게시판 목록 -->
+    <select id="getList" resultType="com.ldu.model.BoardVO">
+    
+        select * from board
+    
+    </select>
 </mapper>
  
