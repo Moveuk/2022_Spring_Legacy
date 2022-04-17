@@ -4,18 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ldu.mapper.BoardMapper">
 
-    <!-- 게시판 등록 -->
-    <insert id="enroll">
-        
-        insert into board(bno, title, content, writer) values (board_seq.nextval, #{title}, #{content}, #{writer})
-        
-    </insert>
- 
-    <!-- 게시판 목록 -->
-    <select id="getList" resultType="com.ldu.model.BoardVO">
-    
-        select * from board
-    
-    </select>
+	<!-- 게시판 등록 -->
+	<insert id="enroll">
+
+		insert into board(bno, title, content, writer) values (board_seq.nextval,
+		#{title}, #{content}, #{writer})
+
+	</insert>
+
+	<!-- 게시판 목록 -->
+	<select id="getList" resultType="com.ldu.model.BoardVO">
+
+		select * from board
+
+	</select>
+
+	<!-- 게시판 조회 -->
+	<select id="getPage" resultType="com.ldu.model.BoardVO">
+
+		select * from board where bno = #{bno}
+
+	</select>
 </mapper>
  
