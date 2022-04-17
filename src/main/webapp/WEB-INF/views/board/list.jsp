@@ -81,9 +81,9 @@ thead {
 						<c:out value="${list.bno}" />
 					</td>
 					<td>
-		                <a class="move" href='<c:out value="${list.bno}"/>'>
-	                        <c:out value="${list.title}"/>
-	                    </a>
+						<a class="move" href='<c:out value="${list.bno}"/>'>
+							<c:out value="${list.title}" />
+						</a>
 					</td>
 					<td>
 						<c:out value="${list.writer}" />
@@ -116,6 +116,9 @@ thead {
 					alert("등록이 완료되었습니다.");
 				}
 
+				if (result === "modify success") {
+					alert("수정이 완료되었습니다.");
+				}
 			}
 
 		});

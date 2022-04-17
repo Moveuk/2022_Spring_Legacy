@@ -28,42 +28,56 @@ public class BoardMapperTests {
 //
 //		BoardVO vo = new BoardVO();
 //
-//		vo.setTitle("mapper test - 리스트 받기");
-//		vo.setContent("mapper test - 리스트 받기");
-//		vo.setWriter("mapper test - 리스트 받기");
+//		vo.setTitle("mapper test - 수정 테스트");
+//		vo.setContent("mapper test - 수정 테스트");
+//		vo.setWriter("mapper test - 수정 테스트");
 //
 //		mapper.enroll(vo);
 //
 //	}
 
-	/* 게시판 목록 테스트 */
+//	/* 게시판 목록 테스트 */
+//	@Test
+//	public void testGetList() {
+//
+//		List list = mapper.getList();
+//		/* 일반적 for문 */
+//		for (int i = 0; i < list.size(); i++) {
+//			log.info("" + list.get(i));
+//		}
+//
+//		/* foreach문(향상된 for문) */
+//		for (Object a : list) {
+//			log.info("" + a);
+//		}
+//
+//		/* foreach문 & 람다식 */
+//		list.forEach(board -> log.info("" + board));
+//
+//	}
+//
+//	/* 게시판 조회 */
+//	@Test
+//	public void testGetPage() {
+//
+//		/* 실제 존재하는 페이지 */
+//		int bno = 8;
+//
+//		log.info("" + mapper.getPage(bno));
+//
+//	}
+
+	/* 게시판 수정 */
 	@Test
-	public void testGetList() {
+	public void testModify() {
 
-		List list = mapper.getList();
-		/* 일반적 for문 */
-		for (int i = 0; i < list.size(); i++) {
-			log.info("" + list.get(i));
-		}
+		BoardVO board = new BoardVO();
+		board.setBno(9);
+		board.setTitle("수정 제목");
+		board.setContent("수정 내용");
 
-		/* foreach문(향상된 for문) */
-		for (Object a : list) {
-			log.info("" + a);
-		}
-
-		/* foreach문 & 람다식 */
-		list.forEach(board -> log.info("" + board));
-
-	}
-
-	/* 게시판 조회 */
-	@Test
-	public void testGetPage() {
-
-		/* 실제 존재하는 페이지 */
-		int bno = 8;
-
-		log.info("" + mapper.getPage(bno));
+		int result = mapper.modify(board);
+		log.info("result : " + result);
 
 	}
 }

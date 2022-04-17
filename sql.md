@@ -36,3 +36,10 @@ commit;
 --상세조회 쿼리문
 
 select * from vam_board where bno = 8;
+
+-- 게시글 수정 쿼리문
+-- Oracle
+update vam_board set title='제목 수정', content='내용 수정', updateDate = sysdate where bno = 8;
+-- MySQL
+update vam_board set title='제목 수정', content='내용 수정', updateDate = now() where bno = 8;
+
