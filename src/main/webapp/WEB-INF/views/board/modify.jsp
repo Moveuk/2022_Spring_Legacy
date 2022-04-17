@@ -50,6 +50,10 @@ textarea {
 	padding-left: 80px;
 	margin-top: 50px;
 }
+
+#delete_btn {
+	background-color: #f3e3e7;
+}
 </style>
 </head>
 <body>
@@ -57,7 +61,7 @@ textarea {
 	<form id="modifyForm" action="/board/modify" method="post">
 		<div class="input_wrap">
 			<label>게시판 번호</label>
-			<input name="bno" readonly="readonly"  value='<c:out value="${pageInfo.bno}"/>'>
+			<input name="bno" readonly="readonly" value='<c:out value="${pageInfo.bno}"/>'>
 		</div>
 		<div class="input_wrap">
 			<label>게시판 제목</label>
@@ -65,7 +69,7 @@ textarea {
 		</div>
 		<div class="input_wrap">
 			<label>게시판 내용</label>
-			<textarea rows="3" name="content" ><c:out value="${pageInfo.content}" /></textarea>
+			<textarea rows="3" name="content"><c:out value="${pageInfo.content}" /></textarea>
 		</div>
 		<div class="input_wrap">
 			<label>게시판 작성자</label>
@@ -82,6 +86,7 @@ textarea {
 		<div class="btn_wrap">
 			<a class="btn" id="list_btn">목록 페이지</a>
 			<a class="btn" id="modify_btn">수정 완료</a>
+			<a class="btn" id="delete_btn">삭제</a>
 			<a class="btn" id="cancel_btn">수정 취소</a>
 		</div>
 	</form>
@@ -107,6 +112,13 @@ textarea {
 		/* 취소 버튼 */
 		$("#cancel_btn").on("click", function(e) {
 			form.attr("action", "/board/get");
+			form.submit();
+		});
+
+		/* 삭제 버튼 */
+		$("#delete_btn").on("click", function(e) {
+			form.attr("action", "/board/delete");
+			form.attr("method", "post");
 			form.submit();
 		});
 	</script>
