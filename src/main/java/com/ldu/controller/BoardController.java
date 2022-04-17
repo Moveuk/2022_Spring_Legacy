@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,10 +45,21 @@ public class BoardController {
 		log.info("BoardVO : " + board);
 
 		boardService.enroll(board);
-        
-        rttr.addFlashAttribute("result", "enrol success"); //  addFlashAttribute()을 사용한 이유는 일회성으로만 데이터를 전달하기 위함
+
+		rttr.addFlashAttribute("result", "enrol success"); // addFlashAttribute()을 사용한 이유는 일회성으로만 데이터를 전달하기 위함
 
 		return "redirect:/board/list";
+	}
+
+	/* 게시판 목록 페이지 접속 */
+	@GetMapping("/list")
+	// => @RequestMapping(value="list", method=RequestMethod.GET)
+	public void boardListGET(Model model) {
+
+		log.info("게시판 목록 페이지 진입");
+
+		model.addAttribute("list", boardService.getList());
+
 	}
 
 }
