@@ -19,10 +19,16 @@ public class BoardServiceImpl implements BoardService {
 		mapper.enroll(board);
 	}
 
+	/* 게시판 리스트 조회 */
 	@Override
 	public List<BoardVO> getList() {
-        return mapper.getList();
+		return mapper.getList();
 	}
-	
 
+	/* 게시판 조회 */
+	@Override
+	public BoardVO getPage(int bno) {
+
+		return mapper.getPage(bno);
+	}
 }
