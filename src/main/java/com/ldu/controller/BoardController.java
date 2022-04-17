@@ -22,11 +22,14 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 
+	/* 게시판 목록 페이지 접속 */
 	@GetMapping("/list")
 	// => @RequestMapping(value="list", method=RequestMethod.GET)
-	public void boardListGET() {
+	public void boardListGET(Model model) {
 
 		log.info("게시판 목록 페이지 진입");
+
+		model.addAttribute("list", boardService.getList());
 
 	}
 
@@ -51,15 +54,6 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
-	/* 게시판 목록 페이지 접속 */
-	@GetMapping("/list")
-	// => @RequestMapping(value="list", method=RequestMethod.GET)
-	public void boardListGET(Model model) {
 
-		log.info("게시판 목록 페이지 진입");
-
-		model.addAttribute("list", boardService.getList());
-
-	}
 
 }
